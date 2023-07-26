@@ -22,7 +22,7 @@ const Header=()=>{
                 {context.user ? 
                 <Nav className="ms-auto" navbar>
                 <NavItem>
-                    <NavLink to="/" className="text-white p-2" style={{ textDecoration: 'none' }} onClick={()=>{
+                    <NavLink to="/signup" className="text-white p-2" style={{ textDecoration: 'none' }} onClick={()=>{
                         context.setUser(null)
                         navigate("/signup");
                     }}>LogOut</NavLink>
