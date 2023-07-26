@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {Nav,NavItem,Collapse,Navbar,NavbarText,NavbarToggler,NavbarBrand} from "reactstrap";
 import userContext from "../context/UserContext";
 
 
 
 const Header=()=>{
+    const navigate=useNavigate();
     const [isOpen,setIsOpen]=useState(false)
     const context=useContext(userContext)
     const toggle=()=>{setIsOpen(!isOpen)}
@@ -21,7 +22,10 @@ const Header=()=>{
                 {context.user ? 
                 <Nav className="ms-auto" navbar>
                 <NavItem>
-                    <NavLink to="/" className="text-white p-2" style={{ textDecoration: 'none' }}>LogOut</NavLink>
+                    <NavLink to="/" className="text-white p-2" style={{ textDecoration: 'none' }} onClick={()=>{
+                        context.setUser(null)
+                        navigate("/signup");
+                    }}>LogOut</NavLink>
                 </NavItem>
                 </Nav>:
                  <Nav className="ms-auto" navbar>
